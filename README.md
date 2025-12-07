@@ -8,6 +8,13 @@ We developed a C++ program capable of efficiently performing the calculations re
 
 Because computational values are discrete rather than continuous, we used Monte Carlo Integration to approximate the necessary integrals. This method allowed faster evaluation than a standard Riemann sum while maintaining acceptable accuracy. A key objective was to determine the optimal number of subdivisions sufficient to produce reliable results while minimizing performance overhead.
 
+# TODO:
+
+Asymptotic Analysis (Show the runtime of monte carlo function, pretty sure its just O(n))
+Add graph generation at the end
+Finish Latex file
+Write steps to run app on local machine
+
 # How to run this application on your local machine:
 
 
