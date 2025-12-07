@@ -2,7 +2,7 @@
 
 Originally created for our Calculus II course at CSU, Chico, this project demonstrated concepts such as velocity, acceleration, and displacement using integrals.
 
-Our goal was to build an accurate real-time simulation that continuously updated an object's properties—such as speed, acceleration, and, when relevant, mass. To achieve this, we implemented integrals involving changes in velocity as well as changes in position with respect to that velocity.
+Our goal was to build an accurate real-time simulation that continuously updated an object's properties, such as speed, acceleration, and, when relevant, mass. To achieve this, we implemented integrals involving changes in velocity as well as changes in position with respect to that velocity.
 
 We developed a small program in C++ that was capable of efficiently performing the calculations required to model an object moving through space.
 
