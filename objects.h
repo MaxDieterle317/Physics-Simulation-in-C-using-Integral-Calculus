@@ -19,8 +19,4 @@ class Particle {
         void setVel(double newVel) { velocity = newVel; }
         void setAcc(double newAcc) { acceleration = newAcc; }
  
-        void update(double dt) { //helper to update position and velocity based on time
-        velocity += acceleration * dt;  
-        position += velocity * dt;  
-        }
 };
