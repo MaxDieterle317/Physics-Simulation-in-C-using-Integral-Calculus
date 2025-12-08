@@ -8,7 +8,7 @@ using namespace std;
 
 double MCDisplacement(double, double, double, int);
 
-int main(){
+int main() {
     srand(time(0));  //seed with current time
 
     using clock = chrono::high_resolution_clock; //the clock we will be using is the high resolution clock from the chrono library
