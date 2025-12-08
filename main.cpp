@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include <chrono> //for the clock
 #include <vector>
@@ -64,8 +65,11 @@ int main() {
     cout << "-------------------------------\n\n";
 
     auto start = clock::now(); //start the clock
+							   
+	ofstream trajFile("trajectory.csv"); // file for logging data velocity vs position
+	trajFile << "timestep,particle,x,v\n";
 
-    //placeholder simulation loop
+    //simulation loop
     for (int timestep = 0; timestep < numSteps; timestep++) {
         for (int j = 0; j < particles.size(); j++){
             Particle& p = particles[j];
@@ -80,6 +84,8 @@ int main() {
 
             p.setVel(v); //set new position and velocity for next step
             p.setPos(x);
+
+			trajFile << timestep << "," << j << "," << x << "," << v << "\n"; //log into file
         }
     }
 
@@ -87,29 +93,7 @@ int main() {
 
     ms timeElapsed = end - start; //how much time passed?
 
-    double T = numSteps * dt; //total time
-    double exactVel = acceleration * T; //exact velocity
-    double exactPos = 0.5 * acceleration * T * T; //exact position
-
-    double simVel = particles[0].getVel();
-    double simPos = particles[0].getPos();
-
-    double velError = simVel - exactVel;
-    double posError = simPos - exactPos;
-
-    cout << "\n----------- Results -----------\n";
-    cout << "Exact final velocity:   " << exactVel << '\n';
-    cout << "Simulated final velocity: " << simVel << '\n';
-    cout << "Velocity error:         " << velError << "\n\n";
-
-    cout << "Exact final position:   " << exactPos << '\n';
-    cout << "Simulated final position: " << simPos << '\n';
-    cout << "Position error:         " << posError << "\n";
-    cout << "-------------------------------\n\n";
-
-
-    cout << "Simulated " << particleCount << " particles for "
-        << numSteps << " steps in " << timeElapsed.count() << " ms\n\n";
+    cout << "Simulated " << particleCount << " particles for " << numSteps << " steps in " << timeElapsed.count() << " ms\n";
 
     return 0;
 }
