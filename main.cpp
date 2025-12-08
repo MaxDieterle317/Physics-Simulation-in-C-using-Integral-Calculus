@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include <chrono> //for the clock
 #include <vector>
@@ -22,6 +23,9 @@ int main(){
     }
 
     auto start = clock::now(); //start the clock
+							   
+	ofstream trajFile("trajectory.csv"); // file for logging data velocity vs position
+	trajFile << "timestep,particle,x,v\n";
 
     //placeholder simulation loop
     for (int timestep = 0; timestep < numSteps; timestep++) {
@@ -36,6 +40,8 @@ int main(){
 
             p.setVel(v); //set new position and velocity for next step
             p.setPos(x);
+
+			trajFile << timestep << "," << j << "," << x << "," << v << "\n"; //log into file
         }
     }
 
@@ -44,6 +50,11 @@ int main(){
     ms timeElapsed = end - start; //how much time passed?
 
     cout << "Simulated " << particleCount << " particles for " << numSteps << " steps in " << timeElapsed.count() << " ms\n";
+	
+	ofstream timeFile("timings.csv", ios::app); //file for time vs input size?
+	timeFile << particleCount << "," << numSteps << "," << dt << ","
+             << timeElapsed.count() << "\n";
+	timeFile.close();
 
     return 0;
 }
